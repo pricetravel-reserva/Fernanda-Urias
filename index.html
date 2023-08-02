@@ -1,116 +1,41 @@
-<!DOCTYPE html>
-<!-- saved from url=(0057)https://www.pricetravel.com.mx/ayuda/consultar-itinerario -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>
-      
-Consulta tu itinerario
-
-   </title>
-   
-
-      <meta name="Description" id="meta1" content="Consulta el estatus de tu reservación, imprime tu itinerario, solicita modificaciones o cancelaciones para los servicios de tu reservación.">
-   
-
-<style type="text/css">
-#frmReservation {margin-bottom:0;}
-#divReservationStatus {border:none;}
-#divReservationStatus table {border-collapse:collapse; border:1px solid #D1D0C0;margin:0;}
-#divReservationStatus table caption {margin:0 0 10px 0; padding:0; border:none; color:#444; font-size:115%;}
-#divReservationStatus tr.title th {padding:3px 6px;border-top:none;}
-#divReservationStatus .odd td {background:#f9f9f9;}
-#divReservationStatus tr.odd:hover td {background:#FFFBE4;}
-#divReservationStatus th {border:1px solid #D1D0C0; white-space:nowrap;}
-#divReservationStatus td.sign {padding-right:0;}
-#divReservationStatus td.curr {padding-left:0;}
-</style>
-<style type="text/css">
-   #main-login{width:600px; margin: 10px auto;}
-   .group, #Content{height: 1%;}
-   .group:after, #Content:after{clear:both; content:"."; display:block; height:0; visibility:hidden;}
-   
-   #login-form, #login-info{float:left; width:50%}
-   #login-form label{display:block;}
-   #login-form input[type="text"]{margin-bottom:1em; border: 1px solid #ccc; padding: 0.3em}
-   #login-form input[type="text"]:focus{border-color:#0066CC}
-   #login-form input[type="submit"]{display:block;}
-   #login{border:1px solid #CCC;}
-   
-</style>
-
-<script src="./Consulta tu itinerario_files/yahoo-dom-event.js.descarga" type="text/javascript">
-</script>
-<script type="text/javascript">
-
-   function switchView(id) {
-      if (YAHOO.util.Dom.get(id).style.display == 'none')
-         YAHOO.util.Dom.get(id).style.display = '';
-      else
-         YAHOO.util.Dom.get(id).style.display = 'none';
-   }
-
-   function switchDisablePrint(LinkId, DivId) {
-      hideHelpDivs(DivId);
-      var left = GetObjectPosition(YAHOO.util.Dom.get(LinkId))[0];
-      var top = GetObjectPosition(YAHOO.util.Dom.get(LinkId))[1];
-      if (YAHOO.util.Dom.get(DivId).style.top != (top + 15) + "px") {
-         YAHOO.util.Dom.get(DivId).style.left = (left - 325) + "px";
-         YAHOO.util.Dom.get(DivId).style.top = (top + 15) + "px";
-         YAHOO.util.Dom.get(DivId).style.display = '';
-      }
-      else {
-         switchView(DivId);
-      }
-   }
-
-   function monitorMouseMoveForElement(elem) {
-      var isMouseOver = false; _e(elem, "onmouseover", function (evt) { isMouseOver = true; }); _e(elem, "onmouseout", function (evt) { isMouseOver = contains(this, (evt = evt || window.event, evt.relatedTarget || evt.toElement)); });
-      function contains(cer, cee) { if (cer.contains) { return cer.contains(cee); } else if (typeof cee.parentNode != "undefined") { return (function (cr, ce) { return cr == ce || ce && ce.parentNode && arguments.callee(cr, ce.parentNode) || false; })(cer, cee); } else { return false; } } function _e(obj, evt, func) { if (obj[evt]) { obj[evt] = (function (x) { return function (evt) { func.call(this, evt); return x.call(this, evt); } })(obj[evt]); } else { obj[evt] = func; } } return function () { return isMouseOver; };
-   }
-
-   function showRejectedPaymentMessage(linkId, idLanguage) {
-      var tollFreeAR = 'Sin costo desde Argentina';
-      var tollFreeMX = 'Sin costo desde México';
-      var tollFreeUS = 'Sin costo desde EE. UU. y Canadá';
-      var restOfTheWorld = 'Desde otros países';
-      document.getElementById('phoneTitle1').innerHTML = (idLanguage == 1 ? tollFreeUS : idLanguage == 2 ? tollFreeMX : idLanguage == 3 ? tollFreeAR : '');
-      document.getElementById('phoneTitle2').innerHTML = (idLanguage == 1 ? tollFreeMX : idLanguage == 2 || idLanguage == 3 ? tollFreeUS : '');
-      document.getElementById('phoneTitle3').innerHTML = restOfTheWorld;
-      
-      var left = GetObjectPosition(document.getElementById(linkId))[0];
-      var top = GetObjectPosition(document.getElementById(linkId))[1];
-      document.getElementById('rejected_info').style.left = (left - 385) + "px";
-      document.getElementById('rejected_info').style.top = (top - 8) + "px";
-      document.getElementById('rejected_info').style.display = '';
-   }
-
-   function hidePopupRejectedInfo() {
-      setTimeout("if(!iRejectedInfoHide()){document.getElementById('rejected_info').style.display='none';}", 1000);
-   }
-
-   var divsHelp = new Array("divDisableCoupon", "divDisableReceipt");
-   function hideHelpDivs(DivHelpId) {
-      for (var i = 0; i < divsHelp.length; i++) {
-         if (divsHelp[i] != DivHelpId)
-            YAHOO.util.Dom.get(divsHelp[i]).style.display = 'none';
-      }
-   }
-</script>
-
-    
-   <link rel="SHORTCUT ICON" href="https://3.cdnpt.com/images/favicon3.ico">
-   <link href="./Consulta tu itinerario_files/master.css" rel="stylesheet" type="text/css">
-   <link href="./Consulta tu itinerario_files/bootstrap.css" rel="stylesheet" type="text/css">
-   <script type="text/javascript" src="./Consulta tu itinerario_files/globals.js.descarga"></script>
-   <script type="text/javascript" src="./Consulta tu itinerario_files/jquery-1.7.2.min.js.descarga"></script>  
-   <link href="./Consulta tu itinerario_files/header.css" type="text/css" rel="stylesheet" media="screen">
-   
-   <link href="./Consulta tu itinerario_files/spritespt.css" rel="stylesheet" type="text/css">    
-   
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0048)https://www.pricetravel.com.mx/ayuda/reservacion -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <title>
+   Itinerario para Localizador 21474087
+</title>    
+       
         
-</head>
-<body>
+   <link rel="SHORTCUT ICON" href="https://3.cdnpt.com/images/favicon3.ico">
+   <link href="./Itinerario para Localizador 21474087_files/master.css" rel="stylesheet" type="text/css">
+   <link href="./Itinerario para Localizador 21474087_files/header.css" rel="stylesheet" type="text/css">
+   <link href="./Itinerario para Localizador 21474087_files/bootstrap.css" rel="stylesheet" type="text/css">
+   <link href="./Itinerario para Localizador 21474087_files/spritespt.css" rel="stylesheet" type="text/css">
+   <script type="text/javascript" src="./Itinerario para Localizador 21474087_files/jquery-1.7.2.min.js.descarga"></script>
+   <script type="text/javascript" src="./Itinerario para Localizador 21474087_files/jquery.colorbox-min.js.descarga"></script>
+   <link href="./Itinerario para Localizador 21474087_files/colorbox.css" rel="stylesheet" type="text/css">
+
    
+   <link href="./Itinerario para Localizador 21474087_files/itinerary.css" rel="stylesheet" type="text/css">
+   <link href="./Itinerario para Localizador 21474087_files/itinerario2.css" rel="stylesheet" type="text/css">
+   <link href="./Itinerario para Localizador 21474087_files/itineraryprint.css" rel="stylesheet" type="text/css" media="print">
+   <link href="./Itinerario para Localizador 21474087_files/itinerarioprint.css" rel="stylesheet" type="text/css" media="print">
+   
+    <link href="./Itinerario para Localizador 21474087_files/header.css" rel="stylesheet" type="text/css">
+     
+     
+
+   <style type="text/css">
+      .fl-paymentLink {margin-top: 1em;}
+      .fl-paymentLink .fl + .fl {margin-left: 5%;}
+      .fl-paymentLink .well > h3 { margin: 0 0 1em 0;}
+   </style>
+    
+   
+</head>
+
+<body><div id="cboxOverlay" style="display: none;"></div><div id="colorbox" class="" style="padding-bottom: 42px; padding-right: 42px; display: none;"><div id="cboxWrapper" style=""><div style=""><div id="cboxTopLeft" style="float: left;"></div><div id="cboxTopCenter" style="float: left;"></div><div id="cboxTopRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxMiddleLeft" style="float: left;"></div><div id="cboxContent" style="float: left;"><div id="cboxLoadedContent" class="" style="width: 0px; height: 0px; overflow: hidden;"></div><div id="cboxLoadingOverlay" class="" style=""></div><div id="cboxLoadingGraphic" class="" style=""></div><div id="cboxTitle" class="" style=""></div><div id="cboxCurrent" class="" style=""></div><div id="cboxNext" class="" style=""></div><div id="cboxPrevious" class="" style=""></div><div id="cboxSlideshow" class="" style=""></div><div id="cboxClose" class="" style=""></div></div><div id="cboxMiddleRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxBottomLeft" style="float: left;"></div><div id="cboxBottomCenter" style="float: left;"></div><div id="cboxBottomRight" style="float: left;"></div></div></div><div style="position: absolute; width: 9999px; visibility: hidden; display: none;"></div></div>
+
 <script type="text/javascript">
    function hideSplash()
    {
@@ -128,13 +53,13 @@ Consulta tu itinerario
 
 <center>
    <div id="splash" style="color: #3366AA; left: 0px; width: 100%; display:none">
-      <img style="margin: 0 0 70px 0;" src="./Consulta tu itinerario_files/logosplash2.gif" alt="PRICETRAVEL">
+      <img style="margin: 0 0 70px 0;" src="./Itinerario para Localizador 21474087_files/logosplash2.gif" alt="PRICETRAVEL">
       <h1>
          Estamos procesando tu solicitud
          <span id="dotsSplash" style="position: absolute; display:"></span>
       </h1>
       
-      <img id="aniSpl" style="display:none" src="./Consulta tu itinerario_files/splashv4.gif" alt="...">
+      <img id="aniSpl" style="display:none" src="./Itinerario para Localizador 21474087_files/splashv4.gif" alt="...">
       <script type="text/javascript">
          var iDot = 1
          
@@ -158,7 +83,7 @@ Consulta tu itinerario
    </div>
 </center>
 
-
+    
    <div id="splashContent">
       <div id="divRoomQuoted" style="position: absolute; display: none; left: 526px; z-index: 2;" onmouseout="javascript:hidePopup();"></div>
       <div id="container2"> 
@@ -167,7 +92,7 @@ Consulta tu itinerario
 <div class="header-container no-print">
     <div class="header-row">
         <div class="header-column header-logo">
-            <a href="https://www.pricetravel.com.mx/">
+            <a href="#">
                 <svg class="pt-logo" xmlns:xlink="http://www.w3.org/1999/xlink" height="30px" version="1.1" viewBox="0 0 202 30" width="202px" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                         <polygon id="path-1" points="0.546432534 0.423404922 20.4499069 0.423404922 20.4499069 12.4444444 0.546432534 12.4444444"></polygon>
@@ -225,15 +150,15 @@ Consulta tu itinerario
         
         <ul class="header-column desktop-shortcuts">
             <li>
-                <a href="https://www.pricetravel.com/?loginOpen=open&amp;loginTimeout=0">Mi cuenta</a>
+                <a href="#">Mi cuenta</a>
             </li>
             <li>
-                <a href="https://www.pricetravel.com.mx/ayuda/consultar-itinerario">Consultar reservación</a>
+                <a href="#">Consultar reservación</a>
             </li>
         </ul>
         <ul class="header-column mobile-shortcuts">
             <li>
-                <a title="Iniciar sesión" href="https://www.pricetravel.com.mx/?loginOpen=open&amp;loginTimeout=0">
+                <a title="Iniciar sesión" href="#">
                     <svg width="24px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                             <polygon id="pathLogin" points="0 0 24 0 24 24 0 24"></polygon>
@@ -241,7 +166,7 @@ Consulta tu itinerario
                         </g>
                     </svg>
                 </a>
-                <a class="help" title="Consultar reservación" href="https://www.pricetravel.com.mx/ayuda/consultar-itinerario">
+                <a class="help" title="Consultar reservación" href="#">
                     <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                             <polygon id="pathHelp" points="0 0 24 0 24 24 0 24"></polygon>
@@ -254,63 +179,515 @@ Consulta tu itinerario
         <ul class="header-column tablet-booker">
         </ul>
     </div>
-        <img class="header-line" src="./Consulta tu itinerario_files/pt-line-header.png" alt="PRICETRAVEL - reserva tu viaje" "="">
+        <img class="header-line" src="./Itinerario para Localizador 21474087_files/pt-line-header.png" alt="PRICETRAVEL - reserva tu viaje" "="">
     </div>
- 
-         <div id="Content"> 
-             
-<div id="breadcrumb-pt"><span class="breadcrumb-item home" title="PriceTravel - Viaja fácil, sin pretextos" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="https://www.pricetravel.com.mx/" itemprop="url"><span itemprop="title">Inicio</span></a></span><span class="breadcrumb-item home" title="Ayuda" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://www.pricetravel.com.mx/ayuda" itemprop="url"><span itemprop="title">Ayuda</span></a></span><span class="breadcrumb-item home" title="Consulta tu itinerario" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><span itemprop="title">Consulta tu itinerario</span> <meta itemprop="url" content="https://www.pricetravel.com.mx/ayuda/consultar-itinerario"> </span> </div>
+  
+         <div id="Content">
             
-
-   <div id="main-login">
-      
-      <form id="frm" method="post" action="https://www.pricetravel.com.mx/ayuda/iniciar-sesion">
-         <div id="login" class="group">
-            <div id="login-form">
-               <div style="padding:1em; border-right: 1px solid #CCC;">
-                  <h1>Consulta tu itinerario</h1>
-                  <p>
-                    <input type="hidden" name="doSearch" value="true">
-                    <label for="MasterLocator" class="smallv">Localizador:</label>
-                    <input type="text" name="MasterLocator" id="MasterLocator" size="35" value="">
-                    <label for="email" class="smallv">
-                      Tu email (el que usaste para reservar):
-                    </label>
-                    <input type="text" name="email" id="email" size="35" value="">
-                  </p>
-                  <p><a href="Itinerario para Localizador 21474087.html"><img src="Generando orden de pago_files/wew.png" width="104" height="35" alt=""/></a> </p>
-               </div>
+   
+<div class="reslinks">
+    
+   <a class="smallv" onclick="backPage(); return false;" href="#" title="Consultar otro itinerario">« Consultar otro itinerario</a>
+   <span class="fr">
+      <a href="#" class="smallv">
+         Salir
+      </a>
+   </span>
+   
+</div>
+<div id="secTitle">
+   <div class="group">
+      <div class="group printable">
+         <div class="fr right">
+            <h3>
+               Itinerario para Localizador 21474087
+            </h3>
+            <div>
+               Creado el mie, 2 ago 2023
+               <br>
+               Titular de la reservación:&nbsp;Fernanda Urias
             </div>
-            <div id="login-info">
-               <div style="padding:1em;">
-                  <h3>Al consultar tu itinerario podrás:</h3>
-                  <ul>
-                  <li>Consultar el estado de tu reservación.</li>
-<li>Imprimirlo.</li>
-<li>Solicitar cambios o cancelaciones.</li>
-                  
-                  <li>Obtener facturas.</li>
-                  
-                  </ul>
+         </div>
+          
+        <img src="./Itinerario para Localizador 21474087_files/logoprint3.gif" alt="PriceTravel.com.mx" class="printable">
 
+         
+      </div>
+      
+      <div class="fl">
+         <h2>
+             Itinerario para Localizador 21474087
+         </h2>
+      </div>
+      <p class="fr">
+         <span class="light">
+            Titular de la reservación:
+         </span>
+         Fernanda Urias</p>
+   </div>
+</div>
+ 
+   <div id="helpleft">
+      <div class="hotsidbar">
+         <ul>
+            <li>
+               <a class="active" href="#" title="Consulta tu reservación">
+                  Itinerario
+               </a>
+            </li>
+             
+            <li>
+               <a id="lnkInvoicing" href="#" title="Modificar reservación">
+                  Facturación
+               </a>
+            </li>
+            
+            <li>
+               <a id="lnkChangeReservation" href="#" title="Modificar reservación">
+                  Modificaciones
+               </a>
+            </li>
+            
+            <li>
+               <a id="lnkCancelReservation" href="#" title="Cancelar reservación">
+                  Cancelaciones
+               </a>
+            </li>
+            
+            <li>
+               <a href="#">
+                  Mejor precio garantizado
+               </a>
+            </li>
+            
+            <li>
+               <a href="#">
+                  Contrato de Adhesión PROFECO
+               </a>
+            </li>
+            
+                     <li style="margin: 10px 0 0 0;">                            
+                        <a class="imptt" href="#" title="Regresar a Ayuda">Regresar a Ayuda </a>
+                     </li>
+            
+         </ul>
+      </div> 
+   </div>
+
+
+   <div id="itinerary">
+       
+      
+      <div id="itineraryAlerts" class="group">
+         <div class="fr">
+            <input type="button" class="but mSprite" onclick="window.print(); return false;" name="printrec" value="Imprimir">
+         </div>
+         
+                         <div class="group">
+	                    <h3 class="nm info"> <img src="./Itinerario para Localizador 21474087_files/1px.gif" class="infoIcon mSprite">&nbsp;
+		                  Reserva ahora y paga después
+	                   </h3>  
+                     </div>
+                   
+         
+      </div>
+      
+
+     
+      <div class="printable">
+         <h2>
+            Itinerario de viaje</h2>
+      </div>
+      
+      <table id="items" width="100%">
+         
+          <tbody><tr class="item no-print">
+            <td class="itemImage">
+               <img src="./Itinerario para Localizador 21474087_files/quote.gif" alt="">
+            </td>
+            <td class="itemData">
+                <div class="group itemHdr">
+                  <h3>
+                     Instrucciones de pago
+                     
+                  </h3>
+               </div>
+               
+                    <div class="group" id="payQuote">
+                       
+                             <div class="stats fl">
+                                <h3>
+                                   Importe a pagar:</h3>
+                                <p>
+                                   $
+                                   10,794.12 MXN</p>
+                             </div>
+                          
+                       <div class="stats fl">
+                          <h3>
+                             Paga antes de:</h3>
+                          <p>
+                             jue, 03 ago 2023, 02:30 pm
+                             
+                          </p>
+                       </div>
+                    </div>
+                
+
+        <div class="well">
+            <h3>
+                <span class="ptw-icon-laptop large-icon"></span>
+                Pago en linea</h3>
+            <p><a href="Pago de localizador 21474087 - PriceTravel MX.html"><img src="Generando orden de pago_files/Sin título - copia.png" width="186" height="54" alt=""/></a></p>
+            <div class="group">
+                <div class="fl"></div>
+                <div class="fl">
+                    <h3>Aceptamos todas las tarjetas de crédito</h3>
+                           <h4>Paga hasta en 18 meses sin intereses </h4>
+                       <p class="no-print">
+                           <a id="paymentOptionsLink" href="#" class="box ap_colorbox_simple cboxElement" style="text-decoration:none;">
+                               <img src="./Itinerario para Localizador 21474087_files/1px.gif" alt="" class="bank2 spriteBank" title="American Express"><img src="./Itinerario para Localizador 21474087_files/1px.gif" alt="" class="bank3 spriteBank" title="Banamex"><img src="./Itinerario para Localizador 21474087_files/1px.gif" alt="" class="bank4 spriteBank" title="Santander"><img src="./Itinerario para Localizador 21474087_files/1px.gif" alt="" class="bank5 spriteBank" title="HSBC"><img src="./Itinerario para Localizador 21474087_files/1px.gif" alt="" class="bank6 spriteBank" title="Banorte"><img src="./Itinerario para Localizador 21474087_files/1px.gif" alt="" class="bank7 spriteBank" title="Scotiabank Inverlat"><img src="./Itinerario para Localizador 21474087_files/1px.gif" alt="" class="bank8 spriteBank" title="Bancomer"><img src="./Itinerario para Localizador 21474087_files/1px.gif" alt="" class="bank9 spriteBank" title="IXE"><img src="./Itinerario para Localizador 21474087_files/1px.gif" alt="" class="bank10 spriteBank" title="Inbursa"><img src="./Itinerario para Localizador 21474087_files/1px.gif" alt="" class="bank11 spriteBank" title="Banco del Bajio">
+                               &nbsp;Detalles<img src="./Itinerario para Localizador 21474087_files/1px.gif" class="pointR mSprite">
+                           </a>
+                       </p>
+                </div>
+            </div>
+        </div>
+
+            </td>
+         </tr> 
+
+                  
+         <tr class="item item-customerService">
+            <td class="itemImage">
+               <img src="./Itinerario para Localizador 21474087_files/cs.gif" alt="">
+            </td>
+            <td class="itemData">
+               <div class="group itemHdr">
+                  <h3>
+                     Atención a clientes PRICETRAVEL</h3>
+               </div>
+               <table class="itemDesc">
+                 <tbody>
+                   <tr class="title">
+                     <th> México </th>
+                     <th> EE.UU. y Canadá </th>
+                     <th> Argentina </th>
+                     <th> Otros países </th>
+                   </tr>
+                   <tr>
+                     <td> 984 168 8113<br />
+                       <span class="light">Sin costo</span></td>
+                     <td> +52 984 168 8113<br />
+                       <span class="light">Sin costo</span></td>
+                     <td> 0800-554-2228<br />
+                       <span class="light">Sin costo</span></td>
+                     <td> +52 (55) 9863 8825 </td>
+                   </tr>
+                 </tbody>
+               </table></td>
+         </tr>
+         
+         <tr class="item">
+            <td class="itemImage">
+               <img src="./Itinerario para Localizador 21474087_files/hotelIcon2.gif" alt="hotel">
+            </td>
+            <td class="itemData">
+                
+
+<div class="group itemHdr">
+    <div class="fr num"></div>
+    <h3>Secrets Playa Mujeres Golf &amp; Resort - Solo Adultos</h3>
+    <div class="provLogo">
+        <img src="./Itinerario para Localizador 21474087_files/01717769_lg.jpg" alt=""></div>
+    <div class="provData">
+        <ul>
+            <li>Lote 1 M1 SM3, Cancún, Quintana Roo, México</li>
+            <li><b>Teléfono:&nbsp;</b> 52 (998) 283-36 00
+                <b>Fax:&nbsp;</b> () </li>
+        </ul>
+    </div>
+</div>
+
+<b class="alert-success">Comprobante válido para reclamar el servicio descrito</b>
+
+<table class="itemDesc">
+    <tbody><tr class="title">
+        <th>Estancia</th>
+        <th>Huéspedes</th>
+        <th>Habitación y plan</th>
+        <th>Confirmación</th>
+    </tr>
+    
+    <tr class="roomData">
+        <td class="vam stay">
+            <ul class="nm">
+                
+                <li><span style="width: 57px; display: inline-block;">Llegada:</span>&nbsp;lun, 27 nov 2023</li>
+                <li><span style="width: 57px; display: inline-block;">Salida:</span>&nbsp;vie, 1 dic 2023</li>
+                <li><span style="width: 57px; display: inline-block;">Noches:</span>&nbsp;4</li>
+            </ul>
+        </td>
+        <td>
+            2 adultos, sin menores<br>
+            
+        </td>
+        <td>
+            <ul class="nm">
+                <li>Junior suite doble vista al jardín</li>
+                <li>Todo incluido</li>
+                <li>2 Matrimoniales</li>
+                <li>Jardín</li>
+                <li>Hora de entrada:&nbsp;15:00</li>
+                <li>Hora de salida:&nbsp;12:00</li>
+            </ul>
+        </td>
+        <td>
+            <!-- Si es una reserva por tiempo límite, entonces no se muestra como pendiente de pago -->
+            <span class="confirm">21474087-1</span></td>
+    </tr>
+    <tr class="roomMeta">
+        <td colspan="20">
+            <span class="light">Reservado para:</span>&nbsp;<b>Fernanda Urias</b><br>
+            <span class="light">Peticiones especiales:&nbsp;</span>Tarifa Especial
+        </td>
+    </tr>
+    
+
+    <tr>
+        <td colspan="100%">
+            <h4 class="itinerary-appliedPromos-title">Promociones aplicadas</h4>
+
+            <table class="itinerary-appliedPromosTable"><tbody><tr><th class="">Noches</th><th class="">Promoción</th></tr><tr class=""><td>lun. 27 nov. 2023</td><td><span class="itinerary-appliedPromosTable-promoTitle">Venta Especial</span><span class="itinerary-appliedPromosTable-promoDescription">  Precio Especial.</span></td></tr><tr class=""><td>mar. 28 nov. 2023</td><td><span class="itinerary-appliedPromosTable-promoTitle">Venta Especial</span><span class="itinerary-appliedPromosTable-promoDescription">  Precio Especial.</span></td></tr><tr class=""><td>mié. 29 nov. 2023</td><td><span class="itinerary-appliedPromosTable-promoTitle">Venta Especial</span><span class="itinerary-appliedPromosTable-promoDescription">  Precio Especial.</span></td></tr><tr class=""><td>jue. 30 nov. 2023</td><td><span class="itinerary-appliedPromosTable-promoTitle">Venta Especial</span><span class="itinerary-appliedPromosTable-promoDescription">  Precio Especial.</span></td></tr></tbody></table>
+      
+        </td>
+    </tr>
+
+    
+    <tr>
+        <td colspan="20">
+            <h4>Términos y condiciones</h4>
+            <table class="table table-two-columns table-th-onLeft">
+                <tbody>
+                    
+                    <tr>
+                        <th>Condiciones de cancelación para Secrets Playa Mujeres Golf &amp; Resort - Solo Adultos:</th>
+                        <td>
+                            
+                            <div class="timeline">
+                                
+                                <h4>Reservación flexible</h4>
+                                <p>Contamos con un periodo donde no aplican penalidades si cancelas tu reservación. Toma en cuenta que este periodo tiene una duración fija.</p>
+                                
+
+                                <div class="timeline-item timeline--green">
+                                    <div class="timeline-point"></div>
+                                    
+                                    <p>
+                                        <strong>Hasta el 23 noviembre 2023:</strong>
+                                        
+
+                                        <br>
+                                        Reservación flexible
+                                        <br>
+                                        <b>Tu cancelación es gratis</b>
+                                        
+                                    </p>
+                                </div>
+                                
+
+                                <div class="timeline-item timeline--red">
+                                    <div class="timeline-point"></div>
+                                    
+                                    <p>
+                                        <strong>24 noviembre 2023 al 27 noviembre 2023:</strong>
+                                        
+
+                                        <br>
+                                        
+                                        <b>2 noches de penalidad</b>
+                                        
+                                    </p>
+                                </div>
+                                
+                                <div class="timeline-item timeline--purple">
+                                    <div class="timeline-point"></div>
+                                    <p>
+                                        <strong>27 noviembre 2023</strong>
+                                        <br>
+                                        Llegada
+                                    </p>
+                                </div>
+                                <div class="timeline-item timeline--purple no-border">
+                                    <div class="timeline-point"></div>
+                                    <p>
+                                        <strong>1 diciembre 2023</strong>
+                                        <br>
+                                        Salida
+                                    </p>
+                                </div>
+                            </div>
+                            La penalidad mostrada aplica por cada habitación en la reservación. Si la habitación está marcada como no cancelable, no reembolsable o similar, aplica una penalidad del 100% por cada habitación sin importar la fecha en que solicita la cancelación.
+                            <br>
+                            <br>
+                            
+                            <p>
+                                En caso de que tengas que irte del hotel antes de que termine tu estancia (salida anticipada), o no te presentes al hotel (conocido como <em>no show</em>) se considera como cancelación y no aplican reembolsos. Si reduces el número de huéspedes una vez pagada la reservación, es decisión del hotel aplicar penalidades o reembolsos.
+                            </p>
+                            
+                        </td>
+                    </tr>
+
+
+
+
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    
+    
+</tbody></table>
+
+<h4>Cómo llegar al Hotel</h4>
+<p>***Por disposición del municipio local, el hotel cobrará un impuesto obligatorio de $67.42 MXN por habitación, por noche, a pagar directamente en el establecimiento. 
+
+***Antes de tu viaje, te recomendamos consultar los requisitos de entrada y estancia del país que visites directamente con las autoridades nacionales correspondientes. Te recordamos que es&nbsp;responsabilidad del viajero cumplir con las normas y reglas establecidas en el país de destino.</p>
+
+<div class="itemrate holamundo">
+    Tarifa Hotel:&nbsp;<span class="num">$&nbsp;26,985.30 MXN</span>
+</div>
+
+<!--End New Coupon -->
+
+            </td>
+         </tr>
+         
+      </tbody></table>
+      
+      <div class="totalswrap group">
+         <div class="fr">
+            <table class="totals">
+                
+               <tbody><tr class="importe">
+                  <td class="firstcol">
+                     Total reservación:
+                  </td>
+                  <td class="lastcol right">
+                     <span class="fl">$</span>
+                      26,985.30
+                  </td>
+               </tr>
+               
+               <tr class="pagado">
+                  <td class="firstcol">
+                     Pagado:
+                  </td>
+                  <td class="lastcol right">
+                      
+                        <span class="fl">$</span>16,191.18
+                      
+                  </td>
+               </tr>
+                
+               <tr class="saldo">
+                  <td class="firstcol">
+                     Saldo&nbsp;MXN:
+                  </td>
+                  <td class="lastcol right">
+                     <span class="fl">$</span>10,794.30
+                  </td>
+               </tr>
+            </tbody></table>
+            
+         </div>
+      </div>
+      
+      
+      <div id="receipt">
+         <a href="#" onclick="showHidden(); return false;" id="showHistory" style="display: block;">
+            Ocultar historial de pagos
+         </a>
+         <div id="historyHidden" class="nojavascript" style="display: block;">
+            
+               <h3>Pagos</h3>
+                   <table class="list" cellspacing="0" cellpadding="0" width="100%"><tbody><tr class="nb"><td colspan="5"><h3></h3></td></tr><tr class="title"><th>Fecha</th><th>Forma de pago</th><th>No. Pago</th><th>Monto cobrado</th><th>Importe</th></tr><tr><td colspan="5" class="ct"> <span class="light">Cotización en espera de pago.</span></td></tr><tr class="tt"><td colspan="4" class="right"><strong>Pagado MXN:</strong></td><td class="right"><span class="floatleft">$</span> <strong>0.00</strong></td></tr></tbody></table>
+            
+         </div>
+      </div>
+      
+      
+      <div class="accordion group" id="xldPolicy">
+         <div class="accordion-group">
+            <div class="accordion-heading">
+               <a href="#" onclick="showHiddenPolicies(); return false;" data-toggle="collapse" data-parent="#xldPolicy" class="accordion-toggle"><b>
+                     Reglas de la reservación</b> </a>
+            </div>
+            <div id="policyCollapse" class="accordion-body" style="display: none;">
+               <div class="accordion-inner">
+                  <table class="table table-two-columns table-th-onLeft">
+                     <tbody>
+                        
+                    
+                        <tr>
+                           <th>Reglas generales de cancelación</th>
+                           <td>
+                              <ul class="bullet-list">
+                                 <li>Si decides cancelar toma en cuenta que todas las cancelaciones están sujetas a una penalidad. El monto de la penalidad depende del servicio reservado y la fecha en que solicites la cancelación con respecto a la fecha del viaje.</li>
+                                 <li>Consulta la política de cancelación aplicable a tu reservación en: <a href="#">http://www.pricetravel.com.mx/ayuda/cancelar-reservacion</a></li>
+                              </ul>
+                           </td>
+                        </tr>
+                        <tr>
+                           <th>Modificaciones</th>
+                           <td>
+                              <ul class="bullet-list">
+                                 <li>Todas las modificaciones están sujetas a disponibilidad y pueden generar un cargo extra, dependiendo del cambio solicitado y la fecha de la solicitud.</li>
+                              </ul>
+                           </td>
+                        </tr>
+                        <tr>
+                           <th>Términos y condiciones</th>
+                           <td>
+                              <ul class="bullet-list">
+                                 
+
+                                    <li><a href="#">Términos y condiciones</a> aceptados durante el proceso de reservación.</li>
+                                    
+                                    <li><a href="#">Aviso de Privacidad</a> aceptado durante el proceso de reservación</li>
+                                 
+                                    <li>
+                                       <a href="#">Contrato de Adhesión PROFECO</a> que rige esta reservación
+                                    </li>
+                                 
+                                </ul>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
                </div>
             </div>
          </div>
+      </div>
+      
+      <p class="light">
+         <b>
+            Oficinas:</b>
+         Cancún, Quintana Roo,77504, México Cancún, Quintana Roo. 77504, México</p>
+      
+      <div>
+         <p class="smallv padding printHidden">
+            <a onclick="backPage(); return false;" href="#" title="Consultar otro itinerario">«
+               Consultar otro itinerario
+            </a>
+         </p>
+      </div>
+      <form id="frmReservation" method="post" action="#">
+      <input type="hidden" name="IdReservation" value="21474087">
+      <input type="hidden" name="email" value="ferny_urias15@hotmail.com">
       </form>
    </div>
-   <div id="rejected_info" style="position:absolute; width:290px; display:none;" onmouseout="javascript:hidePopupRejectedInfo();">
-      <div id="wraPop" style="width:115px;">
-         <div id="tabPop">Mas información</div>
-      </div>
-      <div id="detPop" style="width:320px; margin-left:160px;">
-         <div style="background:#fff; padding:10px;">
-            <p style="margin-bottom:7px;">El cargo a tu tarjeta no se pudo completar, por favor llámanos para que uno de nuestros agentes le de seguimiento a tu reservación:</p>
-            <p></p><li><span id="phoneTitle1"></span><br><strong>998 881 4851</strong></li><li><span id="phoneTitle2"></span><br><strong>+52 998 881 4851</strong></li><li><span id="phoneTitle3"></span><br><strong>+52 (55) 8663 8825</strong></li>
-            <p></p>
-         </div>
-      </div>
-   </div>
-
+   
          </div>
          <div class="clear"></div>
          
@@ -318,128 +695,213 @@ Consulta tu itinerario
 <footer id="pt-footer" class="footer-wrapper">
     <div class="footer-line-pt"></div>
     <div class="footer-navigation">
-            <div class="footer-section-group footer-width">
-                <div class="footer-navigation-column">
-                    <div class="footer-navigation-group-title">
-                        Servicio al cliente
-                        <span class="ptw-icon-chevdown"></span>
-                    </div>
-                    <ul class="footer-list">
-                        <li><a class="footer-navigation-link" href="https://www.pricetravel.com.mx/ayuda">Ayuda</a></li>
-                        <li><a class="footer-navigation-link" href="https://www.pricetravel.com.mx/ayuda/factura-electronica">Facturación electrónica</a></li>
-                        <li><a class="footer-navigation-link" href="https://www.pricetravel.com.mx/ayuda/consultar-itinerario">Consultar reservación</a></li>
-                        <li><a class="footer-navigation-link" href="https://www.pricetravel.com.mx/ayuda/modificar-reservacion">Modificar reservación</a></li>
-                        <li><a class="footer-navigation-link" href="https://www.pricetravel.com.mx/ayuda/cancelar-reservacion">Cancelar reservación</a></li>
-                    </ul>
-                </div>
-                <div class="footer-navigation-column">
-                    <div class="footer-navigation-group-title">
-                        Acerca de PriceTravel
-                        <span class="ptw-icon-chevdown"></span>
-                    </div>
-                    <ul class="footer-list">
-                        <li><a class="footer-navigation-link" href="https://www.pricetravel.com.mx/info/acerca-nosotros">Nuestra historia</a></li>
-                        <li><a class="footer-navigation-link" href="http://www.pricetravelholding.com/comunicados/">Sala de prensa</a></li>
-                        <li><a class="footer-navigation-link" href="https://pricetravelholding-careers.com/">Carreras</a></li>
-                        <li><a class="footer-navigation-link" href="http://revista.pricetravel.com.mx/">Revista Pricetravel</a></li>
-                    </ul>
-                </div>
-                <div class="footer-navigation-column">
-                    <div class="footer-navigation-group-title">
-                        Proveedores
-                        <span class="ptw-icon-chevdown"></span>
-                    </div>
-                    <ul class="footer-list">
-                        <li><a class="footer-navigation-link" href="https://join.pricetravel.com/">Registrar hotel</a></li>
-                        <li><a class="footer-navigation-link" href="https://www.travelinn.com.mx/">Agencias de viajes</a></li>
-                    </ul>
-                </div>
-                <div class="footer-navigation-column">
-                    <div class="footer-navigation-group-title">
-                        Contáctanos
-                        <span class="ptw-icon-chevdown"></span>
-                    </div>
-                    <ul class="footer-list">
-                        <li><span class="footer-country-title">México </span>998 881 4851</li>
-                        <li><span class="footer-country-title">Colombia </span>(1) 7442074</li>
-                        <li><span class="footer-country-title">EEUU / Canadá </span>+52 998 881 4851</li>
-                        <li><span class="footer-country-title">Resto del mundo </span>+52 (55) 8663 8825</li>
-                        <li><a class="footer-navigation-link" href="mailto:contact@pricetravel.com.mx">contact@pricetravel.com.mx</a></li>
-                        <li class="footer-social-media">
-                            <a title="PriceTravel en Facebook" href="https://www.facebook.com/PriceTravel" rel="nofollow" class="footerSection__socialLinkIcon">
-                                <span class="ptw-icon-facebook-sq footer-icon-social-link"></span>
-                            </a>
-                            <a title="PriceTravel en Twitter" href="https://twitter.com/pricetravel" rel="nofollow" class="footerSection__socialLinkIcon">
-                                <span class="ptw-icon-twitter footer-icon-social-link"></span>
-                            </a>
-                            <a title="PriceTravel en Instagram" href="https://www.instagram.com/pricetravel/" rel="nofollow" class="footerSection__socialLinkIcon">
-                                <span class="ptw-icon-instagram footer-icon-social-link"></span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="footer-site-legal">
+      <div class="footer-section-group footer-width">
+        <div class="footer-navigation-column">
+          <div class="footer-navigation-group-title"> Servicio al cliente <span class="ptw-icon-chevdown"></span></div>
+          <ul class="footer-list">
+            <li><a class="footer-navigation-link" href="#">Ayuda</a></li>
+            <li><a class="footer-navigation-link" href="#">Facturación electrónica</a></li>
+            <li><a class="footer-navigation-link" href="#">Consultar reservación</a></li>
+            <li><a class="footer-navigation-link" href="#">Modificar reservación</a></li>
+            <li><a class="footer-navigation-link" href="#">Cancelar reservación</a></li>
+          </ul>
+        </div>
+        <div class="footer-navigation-column">
+          <div class="footer-navigation-group-title"> Acerca de PriceTravel <span class="ptw-icon-chevdown"></span></div>
+          <ul class="footer-list">
+            <li><a class="footer-navigation-link" href="#">Nuestra historia</a></li>
+            <li><a class="footer-navigation-link" href="#">Sala de prensa</a></li>
+            <li><a class="footer-navigation-link" href="#">Carreras</a></li>
+            <li><a class="footer-navigation-link" href="#">Revista Pricetravel</a></li>
+          </ul>
+        </div>
+        <div class="footer-navigation-column">
+          <div class="footer-navigation-group-title"> Proveedores <span class="ptw-icon-chevdown"></span></div>
+          <ul class="footer-list">
+            <li><a class="footer-navigation-link" href="#">Registrar hotel</a></li>
+            <li><a class="footer-navigation-link" href="#">Agencias de viajes</a></li>
+          </ul>
+        </div>
+        <div class="footer-navigation-column">
+          <div class="footer-navigation-group-title"> Contáctanos <span class="ptw-icon-chevdown"></span></div>
+          <ul class="footer-list">
+            <li><span class="footer-country-title">México </span>984 168 8113</li>
+            <li><span class="footer-country-title">Colombia </span>(1) 7362074</li>
+            <li><span class="footer-country-title">EEUU / Canadá </span>+52 984 168 8113</li>
+            <li><span class="footer-country-title">Resto del mundo </span>+52 (55) 8203 8825</li>
+            <li><a class="footer-navigation-link" href="mailto:contact@pricetravel.agency">contact@pricetravel.agency</a></li>
+            <li class="footer-social-media"> <a title="PriceTravel en Facebook" href="https://www.facebook.com/PriceTravel" rel="nofollow" class="footerSection__socialLinkIcon"> <span class="ptw-icon-facebook-sq footer-icon-social-link"></span></a> <a title="PriceTravel en Twitter" href="https://twitter.com/pricetravel" rel="nofollow" class="footerSection__socialLinkIcon"> <span class="ptw-icon-twitter footer-icon-social-link"></span></a> <a title="PriceTravel en Instagram" href="https://www.instagram.com/pricetravel/" rel="nofollow" class="footerSection__socialLinkIcon"> <span class="ptw-icon-instagram footer-icon-social-link"></span></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-site-legal">
                 <div class="footer-site-legal-title">
                     © Price Res, SAPI de CV Todos los derechos reservados. All rights reserved.
-                    <a class="footer-navigation-link" href="https://www.pricetravel.com.mx/info/politicas-reservacion?completePage=true">Términos y condiciones</a>
-                    <a class="footer-navigation-link" href="https://www.pricetravel.com.mx/info/aviso-privacidad">Aviso de privacidad</a>
+                    <a class="footer-navigation-link" href="#">Términos y condiciones</a>
+                    <a class="footer-navigation-link" href="#">Aviso de privacidad</a>
                 </div>
             </div>
     </div>
-</footer>
+</footer> 
          
       </div> 
       <div id="Footer1_statisticsContainer"></div>
-
-      
-
-<div class="button-floating">
-    <a href="https://wa.me/529841688113" rel="noreferrer" target="_blank">
-        <img src="./Consulta tu itinerario_files/whatsapp-circle.png" alt="">
-    </a>
-</div>
    </div>
-
-   <script type="text/javascript">
-      function setCookie(name, value, days){ var expires = ""; var date = null; if(days){ date = new Date(); date.setTime(date.getTime()+(days*24*60*60*1000)); expires = "; expires="+date.toGMTString(); } document.cookie = name+"="+value+expires+"; path=/"; }
-      function changeLanguage(){ var preLan = "2"; switch(preLan){ case "1": preLan = "2"; break; case "2": preLan = "1"; break; default: preLan = "0"; break; } setCookie("preLan", preLan, 7); }
-      function movebglogo(id, pos){ document.getElementById(id).style.backgroundPosition = pos; }
-      function monitorMouseMoveForElement(elem) {var isMouseOver = false; _e(elem, "onmouseover", function (evt) { isMouseOver = true; }); _e(elem, "onmouseout", function (evt) { isMouseOver = contains(this, (evt = evt || window.event, evt.relatedTarget || evt.toElement)); }); function contains(cer, cee) { if (cer.contains) { return cer.contains(cee); } else if (typeof cee.parentNode != "undefined") { return (function (cr, ce) { return cr == ce || ce && ce.parentNode && arguments.callee(cr, ce.parentNode) || false; })(cer, cee); } else { return false; } } function _e(obj, evt, func) { if (obj[evt]) { obj[evt] = (function (x) { return function (evt) { func.call(this, evt); return x.call(this, evt); } })(obj[evt]); } else { obj[evt] = func; } } return function () { return isMouseOver; };}
+   
+   <script type="text/javascript" language="javascript">
+      function setCookie(name, value, days) { var expires = ""; var date = null; if (days) { date = new Date(); date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000)); expires = "; expires=" + date.toGMTString(); } document.cookie = name + "=" + value + expires + "; path=/"; }
+      function changeLanguage() { var preLan = "2"; switch (preLan) { case "1": preLan = "2"; break; case "2": preLan = "1"; break; default: preLan = "0"; break; } setCookie("preLan", preLan, 7); }
+      function movebglogo(id, pos) { document.getElementById(id).style.backgroundPosition = pos; }
+      function monitorMouseMoveForElement(elem) { var isMouseOver = false; _e(elem, "onmouseover", function (evt) { isMouseOver = true; }); _e(elem, "onmouseout", function (evt) { isMouseOver = contains(this, (evt = evt || window.event, evt.relatedTarget || evt.toElement)); }); function contains(cer, cee) { if (cer.contains) { return cer.contains(cee); } else if (typeof cee.parentNode != "undefined") { return (function (cr, ce) { return cr == ce || ce && ce.parentNode && arguments.callee(cr, ce.parentNode) || false; })(cer, cee); } else { return false; } } function _e(obj, evt, func) { if (obj[evt]) { obj[evt] = (function (x) { return function (evt) { func.call(this, evt); return x.call(this, evt); } })(obj[evt]); } else { obj[evt] = func; } } return function () { return isMouseOver; }; }
       function navigate(url) { var form = document.createElement("form"); form.name = "linkForm"; form.action = url; form.method = "post"; hdn = document.createElement("input"); hdn.setAttribute("type", "hidden"); hdn.setAttribute("id", "ReturnUrl"); hdn.setAttribute("name", "ReturnUrl"); hdn.setAttribute("value", document.location.href); form.appendChild(hdn); document.body.appendChild(form); form.submit(); }
    </script>
    
-<script type="text/javascript">
-   document.getElementById("MasterLocator").focus();
-    var iRejectedInfoHide = monitorMouseMoveForElement(document.getElementById('rejected_info'));
-</script>    
+    <script type="text/javascript" src="./Itinerario para Localizador 21474087_files/transactionsview.js.descarga"></script>
+   
+   <script language="javascript" type="text/javascript">
+      function backPage() {
+         YAHOO.util.Dom.get('frmReservation').action = 'https://www.priceres.com.mx/ayuda//consultar-itinerario';
+         YAHOO.util.Dom.get('frmReservation').submit();
+      }
 
-   <script type="text/javascript" src="./Consulta tu itinerario_files/PT.Scripts.Header-min.js.descarga"></script>
+      function goToInvoicing() {
+         YAHOO.util.Dom.get('frmReservation').action = 'https://www.priceres.com.mx/ayuda//facturacion';
+         YAHOO.util.Dom.get('frmReservation').submit();
+      }
+
+      function toggleBusPolicies() {
+         var bpt = document.getElementById("busPoliciesToggler");
+         var bp = document.getElementById("busPolicies");
+         var style = bp.style.display;
+
+         if (style == "none") {
+            bp.style.display = "block";
+            bpt.style.display = "none";
+         }
+      }
+   </script>
    <script type="text/javascript">
-       
-       var headerScripts = PT.General.Header({
-           isCustomerLoginEnabled: True,
-           customerSiteUrl: 'https://www.pricetravel.com.mx/clientes?fromPriceTravel=true',
-           customerUriLogout: 'https://www.pricetravel.com.mx/clientes/logout',
-           reloadLogout: True,
-           localSecureUrl: 'https://www.pricetravel.com.mx'
-      });
-      headerScripts.init();
-   </script>  
+
+      
+      var balance = 30106.67;
+      var viewText = 'Ver historial de pagos';
+      var hideText = 'Ocultar historial de pagos';
+      var showed = balance != 0? true: false;
+      var showedPolicies = false;
+
+      if (balance != 0) {showed = true; }
+      document.getElementById('historyHidden').style.display = showed == true ? 'block' : 'none';
+      document.getElementById('showHistory').style.display = 'block';
+      var elementPolicy = document.getElementById('policyCollapse');
+      if (typeof (elementPolicy) != undefined && typeof (elementPolicy) != null && typeof (elementPolicy) != 'undefined' && elementPolicy) {
+          elementPolicy.style.display = 'none';
+      }
+      
+
+      function showHidden() {
+         if (showed == false) {
+            document.getElementById('historyHidden').style.display = 'block';
+            document.getElementById('historyHidden').setAttribute("class", "nojavascript toogleHistoryPayments");
+            document.getElementById('showHistory').innerHTML = hideText;
+            showed = true;
+         } else {
+            document.getElementById('historyHidden').style.display = 'none';
+            document.getElementById('historyHidden').setAttribute("class","nojavascript");
+            document.getElementById('showHistory').innerHTML = viewText;
+            showed = false;
+         }
+      }
+
+      function goToPaymentInformation() {           
+           document.getElementById('historyHidden').style.display = 'block';
+           document.getElementById('historyHidden').setAttribute("class", "nojavascript toogleHistoryPayments");
+           document.getElementById('showHistory').innerHTML = hideText;
+           showed = true;
+           document.getElementById('showHistory').scrollIntoView({behavior: 'smooth'});
+      }
+
+      function showHiddenPolicies(){
+         if(showedPolicies == false){
+            document.getElementById('policyCollapse').style.display = 'block';
+            showedPolicies = true;
+         }else{
+            document.getElementById('policyCollapse').style.display = 'none';
+            showedPolicies = false;
+         }
+      }
+      
+      
+      function toggle(toggleElement, mode){
+         var el = document.getElementById(toggleElement);
+         mode = mode ? mode : 'block';
+         if (el != null) {
+            el.style.display = (el.style.display == 'none' ? mode : 'none');
+         }
+      }
+      function show(element, mode) {
+         var el = document.getElementById(element);         
+         mode = mode ? mode : 'block';
+         if (el != null) {
+            el.style.display = mode;
+         }
+      }
+      function hide(element) {
+         var el = document.getElementById(element);         
+         if(el != null) {
+            el.style.display = 'none';
+         }
+      }
+      function loadPage(url) {
+         document.location.href = url;
+      }
+      toggle('privacyMessage');
+
+      var buttons = document.getElementsByClassName("ap_travelerGuideButton");
+      var travelerGuideUrlTemplate = "/ayuda/guia-de-viajero?e=eTemplate\u0026m=mTemplate\u0026i=iTemplate";
+
+      for (var i = 0; i < buttons.length; ++i) {
+         var button = buttons[i];
+
+         button.onclick = function() {
+            var i = button.getAttribute("data-i");
+            var m = button.getAttribute("data-m");
+            var e = button.getAttribute("data-e");
+
+            var url = travelerGuideUrlTemplate
+               .replace("iTemplate", i)
+               .replace("mTemplate", m)
+               .replace("eTemplate", e);
+
+            window.open(url);
+         };
+      }
+   </script>
+
+      <script type="text/javascript" src="./Itinerario para Localizador 21474087_files/PT.Scripts.Header-min.js.descarga"></script>
+      <script type="text/javascript">
+         var headerScripts = PT.General.Header({
+            isCustomerLoginEnabled: true,
+            customerSiteUrl: 'https://www.pricetravel.com.mx/clientes?fromPriceTravel=true',
+            customerUriLogout: 'https://www.pricetravel.com.mx/clientes/logout',
+            customerUriCreateUser: 'https://www.pricetravel.com.mx/clientes/crear',
+            reloadLogout: false,
+            localSecureUrl: 'https://www.pricetravel.com.mx'
+         });
+         headerScripts.init();
+      </script>  
    
     <script type="text/javascript">
         var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
         document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script><script src="./Consulta tu itinerario_files/ga.js.descarga" type="text/javascript"></script>
+</script><script src="./Itinerario para Localizador 21474087_files/ga.js.descarga" type="text/javascript"></script>
     <script type="text/javascript">
      try {
          var pageTracker = _gat._getTracker("UA-3153734-1");
          pageTracker._trackPageview();
      } catch (err) { }</script>
 
-   
+      
 
 
 
-<div id="cboxOverlay" style="display: none;"></div><div id="colorbox" class="" role="dialog" tabindex="-1" style="display: none;"><div id="cboxWrapper"><div><div id="cboxTopLeft" style="float: left;"></div><div id="cboxTopCenter" style="float: left;"></div><div id="cboxTopRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxMiddleLeft" style="float: left;"></div><div id="cboxContent" style="float: left;"><div id="cboxTitle" style="float: left;"></div><div id="cboxCurrent" style="float: left;"></div><button type="button" id="cboxPrevious"></button><button type="button" id="cboxNext"></button><button type="button" id="cboxSlideshow"></button><div id="cboxLoadingOverlay" style="float: left;"></div><div id="cboxLoadingGraphic" style="float: left;"></div></div><div id="cboxMiddleRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxBottomLeft" style="float: left;"></div><div id="cboxBottomCenter" style="float: left;"></div><div id="cboxBottomRight" style="float: left;"></div></div></div><div style="position: absolute; width: 9999px; visibility: hidden; display: none; max-width: none;"></div></div></body></html>
+</body></html>
